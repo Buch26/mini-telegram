@@ -28,9 +28,10 @@ class _CustomModalWindowState extends State<CustomModalWindow> {
   final double fullHeightRatio = 1;
 
   void _onDragUpdate(DragUpdateDetails details) {
+    final minHeight = _getNonWebViewContentHeight();
+    final newHeight = currentHeight - details.delta.dy;
     setState(() {
-      currentHeight = max(maxHeight * minHeightRatio,
-          min(maxHeight, currentHeight - details.delta.dy));
+      currentHeight = newHeight.clamp(minHeight, maxHeight);
     });
   }
 
@@ -65,7 +66,7 @@ class _CustomModalWindowState extends State<CustomModalWindow> {
   }
 
   double _getNonWebViewContentHeight() {
-    return 90;
+    return 89;
   }
 
   @override
@@ -176,15 +177,15 @@ class _CustomModalWindowState extends State<CustomModalWindow> {
     );
   }
 
-  Material _dragButton() {
-    return Material(
-      child: GestureDetector(
-        onVerticalDragUpdate: _onDragUpdate,
-        onVerticalDragEnd: _onDragEnd,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          child: const Icon(Icons.drag_handle),
-        ),
+  GestureDetector _dragButton() {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onVerticalDragUpdate: _onDragUpdate,
+      onVerticalDragEnd: _onDragEnd,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+        child: const Icon(Icons.drag_handle),
       ),
     );
   }
