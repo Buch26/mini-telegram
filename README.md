@@ -1,16 +1,14 @@
 # telegram_mini
 
-A new Flutter project.
+This Flutter project implements a custom modal bottom sheet similar to the TMA window in Telegram. The sheet supports drag-to-resize, WebView display, and runs on both Android and iOS.
 
-## Getting Started
+### 📱 Requirements
+- Flutter 3.x
+- Android/iOS emulator or device
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🚀 Launch
+```bash
+git clone https://github.com/Buch26/mini-telegram.git
+cd mini-telegram
+flutter pub get
+flutter run
